@@ -1,0 +1,67 @@
+[
+  {
+    "command": ["--interactive", "-i"],
+    "options": {
+      "action": "store_true",
+      "help": "Run pycogram in interactive mode. Overrides all other options, except --new."
+    }
+  },
+  {
+    "command": ["--add", "-a"],
+    "options": {
+      "action": "append",
+      "metavar": "group",
+      "help": "Add passwords to one or more groups."
+    }
+  },
+  {
+    "command": ["--replace", "-r"],
+    "options": {
+      "action": "append",
+      "metavar": "group",
+      "help": "Replace passwords from one or more groups."
+    }
+  },
+  {
+    "command": ["--delete", "-d"],
+    "options": {
+      "action": "append",
+      "metavar": "group",
+      "help": "Remove passwords from one or more groups."
+    }
+  },
+  {
+    "command": ["--list", "-l"],
+    "options": {
+      "nargs": "*",
+      "default": false,
+      "metavar": "group",
+      "help": "List keys in one or more groups. If called without arguments, lists all keys in all groups."
+    }
+  },
+  {
+    "command": ["--extract", "-e"],
+    "options": {
+      "action": "append",
+      "metavar": "group",
+      "help": "Extract passwords from one or more groups."
+    }
+  },
+  {
+    "command": ["--path", "-p"],
+    "options": {
+      "default": ".PYCOGRAM_STORE.json",
+      "help": "Specify the path to the password store. Uses .PYCOGRAM_STORE.json by default."
+    }
+  },
+  {
+    "command": ["--new", "-n"],
+    "options": {
+      "nargs": "?",
+      "const": ".PYCOGRAM_STORE.json",
+      "default": false,
+      "help": "Create a new password store file. Uses .PYCOGRAM_STORE.json by default. Overrides all other options."
+
+    }
+  }
+]
