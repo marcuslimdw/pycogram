@@ -1,11 +1,11 @@
 import json
 import os
 from argparse import ArgumentParser
+from crypt import mksalt
 from getpass import getpass
-
 from secrets import compare_digest
 
-from pycogram import PycoStore, make_checksum, make_salt, format_key_tree
+from pycogram import PycoStore, make_checksum, format_key_tree, HASH_METHOD
 
 parser = ArgumentParser('pycogram', 'Simple password manager.')
 
@@ -33,7 +33,7 @@ if args.new:
             # break at the end.
             break
 
-    salt = make_salt()
+    salt = mksalt(HASH_METHOD)
     checksum = make_checksum(master_key, salt)
 
     try:
@@ -75,8 +75,8 @@ else:
             for group_name in args.extract:
                 while True:
                     print(f'Please enter the key in group {group_name} associated with the desired password.')
+                    key = input('Key: ')
                     try:
-                        key = input('Key: ')
                         print(f'The associated password is: {store[group_name].unlock(key, checksum)}')
 
                     except KeyError:

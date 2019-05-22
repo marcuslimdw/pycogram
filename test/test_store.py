@@ -51,7 +51,7 @@ class TestPycoStore:
         assert store['test_group_b'] == group_b
 
     def test_replace(self, store, checksum):
-        replaced = store.replace('test_group_a', 'key', 'new_pass')
+        replaced = store.replace_key('test_group_a', 'key', 'new_pass')
         assert replaced['test_group_a'].unlock('key', checksum) == 'new_pass'
 
 
